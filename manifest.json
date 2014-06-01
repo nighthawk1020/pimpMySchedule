@@ -1,0 +1,34 @@
+{
+	"manifest_version": 2,
+	"name": "PimpMySchedule",
+	"description": "This extension takes the luck out of registering for full BU classes.",
+	"version": "1.0",
+	"options_page": "options.html",
+	
+	"permissions": [
+		"https://ssb.cc.binghamton.edu/*",
+		"tabs"
+	],
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://ssb.cc.binghamton.edu/*"],
+			"js": ["pimpMySched.js"]
+		},
+		{
+			"matches": ["https://ssb.cc.binghamton.edu/banner/twbkwbis.P_GenMenu?name=homepage"],
+			"js": ["clickLogin.js"]
+		},
+		{
+			"matches": ["https://ssb.cc.binghamton.edu/banner/twbkwbis.P_WWWLogin"],
+			"js": ["waitAndSubmitLoginCredentials.js"]
+		},
+		{
+			"matches": ["https://ssb.cc.binghamton.edu/banner/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu*"],
+			"js": ["moveToStudent.js"]
+		}
+	]
+}
