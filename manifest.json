@@ -15,20 +15,8 @@
 	},
 	"content_scripts": [
 		{
-			"matches": ["https://ssb.cc.binghamton.edu/*"],
-			"js": ["pimpMySched.js"]
-		},
-		{
-			"matches": ["https://ssb.cc.binghamton.edu/banner/twbkwbis.P_GenMenu?name=homepage"],
-			"js": ["clickLogin.js"]
-		},
-		{
-			"matches": ["https://ssb.cc.binghamton.edu/banner/twbkwbis.P_WWWLogin"],
-			"js": ["waitAndSubmitLoginCredentials.js"]
-		},
-		{
 			"matches": ["https://ssb.cc.binghamton.edu/banner/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu*"],
-			"js": ["moveToStudent.js"]
+			"js": ["pimpMySchedInit.js"]
 		}
 	]
 }
