@@ -5,7 +5,31 @@ PMS.indexOfCRNInRow = 1;
 PMS.indexOfSectionNameInTable = 0;
 PMS.indexOfClassTable = 5;
 PMS.indexOfFirstClass = 2;
-PMS.wantedClassString = "CS - 
+
+
+function courseBeingQueried(term, subject, CRN) {
+	this.term = term;
+	this.subject = subject;
+	this.CRN = CRN;
+	this.index = PMS.getRowIndexOfCRN(CRN);
+	this.canRegisterFor = PMS.getStatusOfIndex(this.index);
+}
+
+//if the course requires more than one class to be open at a time (you have to register for multiple courses at a time), call this constructor. cCRNs (componentCRN) follow the format of
+//"exCRN,ex2CRN,ex3CRN,ex4CRN"
+//listed by priority. later I may make it so that it will continuously try to get the 1st priority, barring schedule conflicts. But that is further down the line.
+function multiCourseBeingQueried(term, subject, CRN, cCRN) {
+	this = new courseBeingQueried(term, subject, CRN);
+	this.componentCRN = cCRN.split(",");
+	this.componentIndex = [];
+	
+	//filling in the componentIndex array, can't do this as it's instantiated, I have to instantiate it first, then modify it in two separate processes.
+	this.fillIndicesOfcCRNs = function () {
+		this.componentCRN.forEach(function(element) {
+			this.componentIndex.push(PMS.getRowIndexOfCRN(element));
+		}
+	}
+}
 
 //returns section currently being looked at.
 PMS.getCurrentSection = function () {
@@ -17,7 +41,7 @@ PMS.getTableOfClasses = function () {
 	return document.getElementsByTagName("tbody")[this.indexOfClassTable];
 }
 
-//returns row elements, given a number as the index in the table. returns class rows as array of dddefault objects.
+//returns row elements, given the index in the table. returns class rows as array of dddefault objects.
 PMS.getRowByIndex = function (index) {
 	row = this.classTable.getElementsByTagName("tr")[index]
 	//the first two rows don't contain anything other than themselves
@@ -41,7 +65,6 @@ PMS.getStatusOfIndex = function (index) {
 	if(index < this.indexOfFirstClass) return;
 	if(PMS.getSelectField(index).type == "checkbox") return true;
 	return false;
-	
 }
 
 //returns the index of the row containing passed CRN
@@ -67,15 +90,10 @@ PMS.classNameOfCRN = function (passedCRN) {
 //Ooooooooohhhhh boy....
 PMS.attemptToSignUpForWantedClasses = function () {
 //DANGER! WARNING! DANGER! HARD CODED CS 110 CLASS DANGER! WARNING! DANGER! MORE DANGER!
-	if(this.getStatusOfIndex(this.getRowIndexOfCRN(10385)) && this.getStatusOfIndex(this.getRowIndexOfCRN(21300)) {
-		this.getSelectField(this.getRowIndexOfCRN(10385)).click();
-		this.getSelectField(this.getRowIndexOfCRN(21300)).click();
-		document.getElementsByName("ADD_BTN")[0].click();
-	} else {
-		//DOES NOT RESUBMIT DATA, WHICH DEFEATS THE PURPOSE.
-		setTimeout(Location.reload, 300000);
-	}
+	if(this.getStatusOfIndex(this.getRowIndexOfCRN(10385)) && this.getStatusOfIndex(this.getRowIndexOfCRN(21300))) {
+		console.log("kay!");
+	};
 }
 
+//execution
 PMS.classTable = PMS.getTableOfClasses();
-PMS.attemptToSignUpForWantedClasses();
