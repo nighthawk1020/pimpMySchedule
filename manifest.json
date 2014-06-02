@@ -17,6 +17,18 @@
 		{
 			"matches": ["https://ssb.cc.binghamton.edu/banner/twbkwbis.P_GenMenu?name=bmenu.P_MainMnu*"],
 			"js": ["pimpMySchedInit.js"]
+		},
+		{
+			"matches": ["https://ssb.cc.binghamton.edu/banner/bwskfcls.p_sel_crse_search"],
+			"js": ["selectTerm.js"]
+		},
+		{
+			"matches": ["https://ssb.cc.binghamton.edu/banner/bwckgens.p_proc_term_date"],
+			"js": ["hitAdvancedSearch.js"]
+		},
+		{
+			"matches": ["https://ssb.cc.binghamton.edu/banner/bwskfcls.P_GetCrse_Advanced"],
+			"js": ["pimpMySchedMain.js"]
 		}
 	]
 }

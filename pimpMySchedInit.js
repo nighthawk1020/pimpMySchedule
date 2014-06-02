@@ -19,14 +19,9 @@ PMSI.promptToStartPMSISesh = function () {
 	if(startControl) {
 		sessionControl = confirm("Start PimpMySchedule in another tab?");
 		if(sessionControl) {
-			//TODO: send message to background.js to start new tab with the class registration URL, and that tabID will be allowed to run. this allows 
-			console.log("y");
 			chrome.extension.sendMessage("newTabYes");
 		} else {
-			//TODO: send message to background.js to take control of current tab, and start the main process.
-			console.log("n");
 			chrome.extension.sendMessage("newTabNo");
-		
 		}
 	}
 }
