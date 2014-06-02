@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 pimpMySchedule is a Chrome extension designed to automate the process of checking to see if someone else has dropped the course you're interested in, and register yourself in it. Initially that was the sole functionality, however, if you look around you'll notice that I have other plans in the works, namely: session tracking, schedule conflict recognizing, synchronous course registration, intraUser class trading (through a priority system), and data collection.
+=======
+pimpMySchedule is a Chrome extension designed to automate the process of checking to see if someone else has dropped the course you're interested in, and register yourself in it. Initially that was the sole functionality, however, if you look around you'll notice that I have other plans in the works, namely: session tracking, schedule conflict recognizing, synchronous course registration, intraUser class trading (through a priority system), data collection, and the final goal will be to expand this utility to work with any registration system, allowing the user to easily configure the utility to their own method of registration.
+>>>>>>> 11ea42c431185acbeec2d6b3819e6b545323a108
 
 Currently only works with web registration software released by Ellucian in 2014.
 
